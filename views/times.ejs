@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Lista de Times</title>
+  <style>
+    table, th, td { border: 1px solid #333; border-collapse: collapse; padding: 8px; }
+    th { background-color: #f2f2f2; }
+  </style>
+</head>
+<body>
+  <h1>Times Cadastrados</h1>
+
+  <% if (times && times.length > 0) { %>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nome</th>
+          <th>Estádio</th>
+          <th>Cidade</th>
+          <th>Ação</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% times.forEach(time => { %>
+          <tr>
+            <td><%= time.id %></td>
+            <td><%= time.nome %></td>
+            <td><%= time.estadio %></td>
+            <td><%= time.cidade %></td>
+            <td><a href="/times/<%= time.id %>">Ver detalhes</a></td>
+          </tr>
+        <% }); %>
+      </tbody>
+    </table>
+  <% } else { %>
+    <p>Nenhum time disponível no momento.</p>
+  <% } %>
+
+  <br>
+  <p><a href="/">← Voltar ao Início</a></p>
+</body>
+</html>
